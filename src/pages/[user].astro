@@ -1,0 +1,34 @@
+---
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths() {
+  return [
+    { params: { user: '1' } },
+    { params: { user: '2' } },
+    { params: { user: '3' } }
+  ];
+}
+// Obtener el nombre del usuario desde la URL
+const { user } = Astro.params;
+const userData = { // Datos ficticios del usuario
+    name: "John Doe",
+    bio: "Desarrollador Frontend",
+    links: [
+        { title: "GitHub", url: "https://github.com/johndoe" },
+        { title: "LinkedIn", url: "https://linkedin.com/in/johndoe" }
+    ]
+};
+---
+
+<Layout title={user}>
+    <Card 	
+        title={userData.name}
+        body={userData.bio}
+    >
+    <ul>
+        {userData.links.map(link => (
+        <li><a href={link.url}>{link.title}</a></li>
+        ))}
+    </ul>
+  </Card>
+</Layout>

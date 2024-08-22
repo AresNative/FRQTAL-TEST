@@ -1,23 +1,18 @@
 ---
 interface Props {
 	title: string;
-	body: string;
-	href?: string;
-	target?: "_blank" | "_parent"
+	href: string;
 }
 
-const { href, title, body, target } = Astro.props;
+const { href, title} = Astro.props;
 ---
 
 <li class="link-card">
-	<a href={href} target={target}>
+	<a href={href}>
 		<h2>
 			{title}
 			<span>&rarr;</span>
 		</h2>
-		<p>
-			{body}
-		</p>
 	</a>
 </li>
 <style>

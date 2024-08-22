@@ -1,6 +1,6 @@
 ---
 interface Props {
-	title: string;
+	title?: string;
 }
 
 const { title } = Astro.props;
@@ -14,33 +14,77 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>{title}</title> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+	* {
+		box-sizing: border-box;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-family: 'Poppins', sans-serif;
 	}
-	body{
-		/* background-color: #e5d9ff;
-		opacity: 0.9;
-		background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5d9ff 23px ), repeating-linear-gradient( #8b91fc55, #8b91fc ); */
 
-		background-color: #acacac;
-		opacity: 0.6;
-		background-image:  radial-gradient(#1e1e1e 1.4500000000000002px, transparent 1.4500000000000002px), radial-gradient(#1e1e1e 1.4500000000000002px, #acacac 1.4500000000000002px);
-		background-size: 58px 58px;
-		background-position: 0 0,29px 29px;
+	*::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: #c2c2c2;
+		border-radius: var(--border-rd);
+	}
+	::-webkit-scrollbar-thumb {
+		background: #a1a1a1;
+		border-radius: var(--border-rd);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #919090;
+	}
+	:root {
+		--bg: #e8e8e8;
+		--bg-card: #c7c7c7a1;
+
+		--border-rd: 14px;
+
+		--primary: #4a5db6;
+		--secondary: #aab5ff;
+
+		--danger: #ec0058;
+		--succes: #4ab653;
+		--warning: #fcff5e;
+		
+		--color: #0c0c0c;
+		--color-sec: #7a7a7ad0;
+
+
+		--switch-btn-bg: #fff;
+		--switch-border-color: #3c3c434a;
+		--switch-icon-color: #0f0f0f;
+		--switch-bg-color: #f6f6f7;
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		text-wrap: balance;
+	}
+
+	p {
+		text-overflow: ellipsis;
+		text-wrap: pretty;
+	}
+	a{
+		text-decoration: none;
+		color: var(--color);
+	}
+	body{	
+		padding: 4rem;
+		background-size: 54px 54px;
+		background-image: repeating-linear-gradient(45deg, #555555 0, #555555 .5px, #0d0f14 0, #0d0f14 50%);
 	}
 </style>
