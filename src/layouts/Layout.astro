@@ -32,19 +32,15 @@ const { title } = Astro.props;
 			white 60%
 		);
 	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
+	body{
+		/* background-color: #e5d9ff;
+		opacity: 0.9;
+		background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, #e5d9ff 23px ), repeating-linear-gradient( #8b91fc55, #8b91fc ); */
+
+		background-color: #acacac;
+		opacity: 0.6;
+		background-image:  radial-gradient(#1e1e1e 1.4500000000000002px, transparent 1.4500000000000002px), radial-gradient(#1e1e1e 1.4500000000000002px, #acacac 1.4500000000000002px);
+		background-size: 58px 58px;
+		background-position: 0 0,29px 29px;
 	}
 </style>
