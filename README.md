@@ -8,11 +8,15 @@ Este proyecto es una implementación de un perfil público similar a Linktree ut
    ```bash
    git clone https://github.com/AresNative/FRQTAL-TEST.git
    ```
-2. Instala las dependencias:
+2. Acceder a la carpeta:
+   ```bash
+   cd FRQTAL-TEST
+   ```
+3. Instala las dependencias:
    ```bash
    npm i
    ```
-3. Correr el proyecto en local:
+4. Correr el proyecto en local:
    ```bash
    npm run dev
    ```
