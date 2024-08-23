@@ -1,33 +1,42 @@
 ---
 interface Props {
-	title: string;
-	href: string;
+    name: string;
+    image: string;
 }
 
-const { href, title} = Astro.props;
+const { image, name } = Astro.props;
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-	</a>
+<li class="avatar">
+    <img src={image} alt={`Profile picture of ${name}`} />
+    <h2>{name}</h2>
 </li>
+
 <style>
-	.link-card{
-		width: 25rem;
-		
-		margin: auto;
-		padding: 2rem;
+  .avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+	min-width: 10rem;
+    margin: 1rem auto;
+    padding: 1rem;
+    border-radius: var(--border-rd);
+    text-align: center;
+  }
 
-		border-radius: 14px;
-		outline: thick double #ffffff;
-		
-		background: #ffffffde;
-		backdrop-filter: blur(1px);
+  .avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ddd;
+    margin-bottom: 1rem;
+  }
 
-		list-style: none;
-	}
+  .avatar h2 {
+    font-size: 1.5rem; 
+    color: #333; 
+    margin: 0; 
+  }
 </style>

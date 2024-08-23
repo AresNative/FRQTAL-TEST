@@ -1,0 +1,170 @@
+<!-- /src/components/Header.astro -->
+---
+import Modal from "./Modal.astro";
+---
+
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">FRQTAL - (test)</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+    <nav class="nav">
+      <ul>
+        {[
+          { name: "Home", href: "/" },
+          { name: "About", href: "/about" },
+          { name: "Services", href: "/services" },
+          { name: "Contact", href: "/contact" }
+        ].map(link => (
+          <li><a href={link.href}>{link.name}</a></li>
+        ))}
+
+        <li>
+          <button class="theme-toggle" aria-label="Toggle theme" id="theme-toggle">
+            🌙
+          </button>
+        </li> 
+      </ul>
+    </nav>
+    <button class="cta-button" id="signup-btn">Sign Up</button>
+    
+  </div>
+</header>
+
+<Modal />
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const isDarkTheme = localStorage.getItem('theme') === 'dark';
+
+    if (isDarkTheme) {
+      document.body.classList.add('dark-theme');
+      themeToggleButton.textContent = '🌞';
+    }
+
+    themeToggleButton.addEventListener('click', () => {
+      const currentTheme = document.body.classList.toggle('dark-theme');
+      localStorage.setItem('theme', currentTheme ? 'dark' : 'light');
+      themeToggleButton.textContent = currentTheme ? '🌞' : '🌙';
+    });
+  });
+</script>
+
+<style>
+  /* Estilos para el tema claro */
+  .header {
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 95%;
+    margin: auto;
+    margin-top: 2rem;
+    border-radius: var(--border-rd);
+    background: #fff;
+    box-shadow: 0px 3px 15px 0px #00000049;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    padding: 0 20px;
+  }
+
+  .logo a {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .nav a:hover {
+    text-decoration: underline;
+  }
+
+  .cta-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background-color: #0056b3;
+  }
+
+  .theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav {
+      z-index: 101;
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      background-color: #fff;
+      border-radius: var(--border-rd);
+      box-shadow: 0px 3px 15px 0px #00000049;
+    }
+
+    .nav ul {
+      flex-direction: column;
+      margin: auto;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .nav ul li {
+      margin: 0;
+    }
+
+    .nav.active {
+      z-index: 101;
+      display: flex;
+    }
+  }
+</style>

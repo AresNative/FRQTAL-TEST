@@ -1,0 +1,55 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="404">
+<main>
+  <div class="error-container">
+    <h1>404</h1>
+    <p>Sorry, the page you're looking for cannot be found.</p>
+    <a href="/">Go Back Home</a>
+  </div>
+</main>
+</Layout>
+<style>
+    main{
+        min-height: 64vh;
+        display: flex;
+        align-items: center;
+    }
+    .error-container {
+      max-width: 600px;
+      padding: 2rem;
+      margin: auto;
+
+      text-align: center;
+
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0px 3px 15px 0px #0000004f;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+
+    a {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+    }
+  </style>

@@ -1,9 +1,11 @@
 ---
+import '../global.css';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 interface Props {
-	title?: string;
+	title: string;
 }
-
-const { title } = Astro.props;
+const { title } = Astro.props;	
 ---
 
 <!doctype html>
@@ -16,75 +18,24 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title> 
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<section class="content">
+			<slot />
+		</section>
+		<Footer />
 	</body>
 </html>
 <style is:global>
-	* {
-		box-sizing: border-box;
-		position: relative;
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-family: 'Poppins', sans-serif;
-	}
-
-	*::-webkit-scrollbar {
-		width: 10px;
-	}
-	::-webkit-scrollbar-track {
-		background: #c2c2c2;
-		border-radius: var(--border-rd);
-	}
-	::-webkit-scrollbar-thumb {
-		background: #a1a1a1;
-		border-radius: var(--border-rd);
-	}
-	::-webkit-scrollbar-thumb:hover {
-		background: #919090;
-	}
-	:root {
-		--bg: #e8e8e8;
-		--bg-card: #c7c7c7a1;
-
-		--border-rd: 14px;
-
-		--primary: #4a5db6;
-		--secondary: #aab5ff;
-
-		--danger: #ec0058;
-		--succes: #4ab653;
-		--warning: #fcff5e;
-		
-		--color: #0c0c0c;
-		--color-sec: #7a7a7ad0;
-
-
-		--switch-btn-bg: #fff;
-		--switch-border-color: #3c3c434a;
-		--switch-icon-color: #0f0f0f;
-		--switch-bg-color: #f6f6f7;
-	}
-	h1,
-	h2,
-	h3,
-	h4 {
-		text-wrap: balance;
-	}
-
-	p {
-		text-overflow: ellipsis;
-		text-wrap: pretty;
-	}
-	a{
-		text-decoration: none;
-		color: var(--color);
-	}
-	body{	
+	.content{
+		margin: 2rem 0;
 		padding: 4rem;
-		background-size: 54px 54px;
-		background-image: repeating-linear-gradient(45deg, #555555 0, #555555 .5px, #0d0f14 0, #0d0f14 50%);
+	}
+	@media (max-width: 768px) {
+		.content {
+			padding: 1rem;
+		}
 	}
 </style>

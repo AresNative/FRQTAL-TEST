@@ -1,19 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import { FetchAllUsersData } from '../utils/fetchUserData';
+
+const users:any = await FetchAllUsersData();
 ---
 
-<Layout title="Landign in Astro.">
-	<main>
-		<Card 	
-			title="Themes"
-			href="/blog"
-			body="Explore a galaxy of community-built starter themes."
-			target="_parent"
-		/>
-	</main>
+<Layout title="Landing in Astro">
+  <main>
+    {users.map((user: any) => (
+      <Card
+        key={user.id}
+        title={user.name}
+        href={`/${user.id}`}
+        body={user.bio}
+        target="_parent"
+      />
+    ))}
+  </main>
 </Layout>
 
 <style>
-	
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
 </style>
