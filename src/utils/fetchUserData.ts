@@ -6,8 +6,8 @@ export async function FetchUserData(userId: string) {
   return new Promise((resolve, reject) => {
     /* 
       ! Ejemplo de uso de api
-        const response = await fetch(`https://api.example.com/users/${userId}`);
-        if (!response.ok) {
+        const user = await fetch(`https://api.example.com/users/${userId}`);
+        if (!user.ok) {
             reject(new Error("User not found"));
         }
         resolve(response.json()); 
