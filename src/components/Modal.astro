@@ -37,7 +37,8 @@
   }
 
   .modal-content {
-    background: #fff;
+    background: var(--bg);
+    color: var(--color);
     padding: 20px;
     border-radius: var(--border-rd);
     max-width: 400px;
@@ -89,6 +90,9 @@
             border-bottom: 1px solid #ccc;
             outline: none;
             font-size: large;
+            background: var(--bg);
+            
+            color: var(--color);
         }
 
         .modal-content div label {
@@ -96,8 +100,8 @@
             left: 12px;
             top: 40%;
             transform: translateY(-50%);
-            background: white;
-            color: #aaa;
+            background: var(--bg);
+            color: var(--color);
             padding: 0 5px;
             transition: 0.2s ease all;
             pointer-events: none;

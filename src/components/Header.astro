@@ -38,20 +38,23 @@ import Modal from "./Modal.astro";
 
 <script type="module">
   document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleButton = document.getElementById('theme-toggle');
-    const isDarkTheme = localStorage.getItem('theme') === 'dark';
+  const themeToggleButton = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem('theme') || 'light';
+  
+  // Aplica el tema almacenado al cargar la página
+  document.body.setAttribute('data-theme', storedTheme);
+  themeToggleButton.textContent = storedTheme === 'dark' ? '🌞' : '🌙';
 
-    if (isDarkTheme) {
-      document.body.classList.add('dark-theme');
-      themeToggleButton.textContent = '🌞';
-    }
-
-    themeToggleButton.addEventListener('click', () => {
-      const currentTheme = document.body.classList.toggle('dark-theme');
-      localStorage.setItem('theme', currentTheme ? 'dark' : 'light');
-      themeToggleButton.textContent = currentTheme ? '🌞' : '🌙';
-    });
+  // Maneja el cambio de tema
+  themeToggleButton.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    themeToggleButton.textContent = newTheme === 'dark' ? '🌞' : '🌙';
   });
+});
+
 </script>
 
 <style>
@@ -65,7 +68,8 @@ import Modal from "./Modal.astro";
     margin: auto;
     margin-top: 2rem;
     border-radius: var(--border-rd);
-    background: #fff;
+    background: var(--bg);
+    color: var(--color);
     box-shadow: 0px 3px 15px 0px #00000049;
   }
 
@@ -82,7 +86,7 @@ import Modal from "./Modal.astro";
     font-size: 1.3rem;
     font-weight: bold;
     text-decoration: none;
-    color: #333;
+    color: var(--color);
   }
 
   .menu-toggle {
@@ -91,7 +95,8 @@ import Modal from "./Modal.astro";
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
-    color: #333;
+    
+    color: var(--color);
   }
 
   .nav ul {
@@ -104,7 +109,8 @@ import Modal from "./Modal.astro";
 
   .nav a {
     text-decoration: none;
-    color: #333;
+    
+    color: var(--color);
     font-weight: 500;
   }
 
@@ -131,7 +137,7 @@ import Modal from "./Modal.astro";
     border: none;
     font-size: 1rem;
     cursor: pointer;
-    color: #333;
+    color: var(--color);
   }
 
   /* Responsive Styles */
@@ -146,7 +152,7 @@ import Modal from "./Modal.astro";
       position: absolute;
       top: 60px;
       left: 50%;
-      background-color: #fff;
+      background: var(--bg);
       border-radius: var(--border-rd);
       box-shadow: 0px 3px 15px 0px #00000049;
     }
